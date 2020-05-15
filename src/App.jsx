@@ -5,7 +5,7 @@ import { authenticationService } from './_services';
 import { PrivateRoute } from './_components';
 import { HomePage } from './HomePage/HomePage';
 import { LoginPage } from './LoginPage/LoginPage';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -29,7 +29,7 @@ export default class App extends React.Component {
         return (
             <Router history={history}>
                 <div>
-                    {currentUser &&
+                    {/* {currentUser && */}
                         <nav className="navbar navbar-expand navbar-dark bg-dark">
                             <div className="navbar-nav">
                                 <Link to="/" className="nav-item nav-link">Home</Link>
