@@ -1,7 +1,7 @@
 import { authenticationService } from '../_services';
 
 export function authHeader() {
-    const currentUser = authenticationService.currentUserValue;
+    const currentUser = localStorage.getItem("token");
     if (currentUser && currentUser.token) {
         return { Authorization: `Bearer ${currentUser.token}` };
     } else {

@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
-import { handleResponse } from '../_helpers';
 import { Config } from '../config';
+import { handleResponse } from '../_helpers';
 
 // const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -8,10 +8,21 @@ import { Config } from '../config';
 export const authenticationService = {
     login,
     logout,
+    register,
     currentUser : new BehaviorSubject(false)
+
     // currentUser: currentUserSubject.asObservable(),
     // get currentUserValue () { return currentUserSubject.value }
 };
+
+function register(username, password, email, firstName, lastName){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, email, firstName, lastName })
+    };
+    return fetch(`${Config.ApiBaseURL}/user/UserController/register`, requestOptions)
+}
 
 function login(username, password) {
     const requestOptions = {
@@ -20,13 +31,12 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
     return fetch(`${Config.ApiBaseURL}/auth`, requestOptions)
-        // .then(handleResponse)
         .then(response => {
 
             var token = response.headers.get("Authorization")
             if (token){
                 localStorage.setItem("token", token)
-                this.currentUser.next(true)
+                authenticationService.currentUser.next(true)
             }
 
             // // store user details and jwt token in local storage to keep user logged
@@ -41,6 +51,6 @@ function login(username, password) {
 }
 
 function logout() {
-    localStorage.removeItem('currentUser');
+    //localStorage.removeItem('token');
     authenticationService.currentUser.next(false);
 }

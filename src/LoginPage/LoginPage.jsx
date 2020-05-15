@@ -34,7 +34,6 @@ class LoginPage extends React.Component {
                                 user => {
                                     const { from } = this.props.location.state || { from: { pathname: "/" } };
                                     this.props.history.push(from);
-                                    console.log("current user = " + username)
                                 },
                                 error => {
                                     setSubmitting(false);
@@ -56,6 +55,9 @@ class LoginPage extends React.Component {
                             </div>
                             <div className="form-group">
                                 <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Login</button>
+                            </div>
+                            <div>
+                             Register <a href="/register">here</a>
                             </div>
                             {status &&
                                 <div className={'alert alert-danger'}>{status}</div>

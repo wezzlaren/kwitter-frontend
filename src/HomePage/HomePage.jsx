@@ -7,22 +7,28 @@ class HomePage extends React.Component {
         super(props);
 
         this.state = {
-            currentUser: authenticationService.currentUserValue,
-            users: null
+            currentUser: authenticationService.currentUser,
+            user: {
+                username: '',
+            }
         };
         
     }
 
     componentDidMount() {
-        userService.getAll().then(users => this.setState({ users }));
+        userService.getCurrent()
+        .then(res => {
+            this.setState({
+                user: res,
+            })
+        })
     }
 
     render() {
-        const { currentUser, users } = this.state;
-        console.log("who is this? " )
+        //const { user } = this.state;
         return (
             <div>
-                <h1>Welcome to !</h1>
+                <h1>Hello, {this.state.user.username} welcome to Kwitter!</h1>
             <form>
                     <label>
                     Name:
