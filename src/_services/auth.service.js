@@ -21,7 +21,7 @@ function register(username, password, email, firstName, lastName){
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password, email, firstName, lastName })
     };
-    return fetch(`${Config.ApiBaseURL}/user/UserController/register`, requestOptions)
+    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.REGISTER}`, requestOptions)
 }
 
 function login(username, password) {
@@ -30,7 +30,7 @@ function login(username, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     };
-    return fetch(`${Config.ApiBaseURL}/auth`, requestOptions)
+    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.AUTH}`, requestOptions)
         .then(response => {
 
             var token = response.headers.get("Authorization")

@@ -14,8 +14,8 @@ class HomePage extends React.Component {
         };
         
     }
-
-    componentDidMount() {
+    
+    componentWillMount(){
         userService.getCurrent()
         .then(res => {
             this.setState({
@@ -24,8 +24,11 @@ class HomePage extends React.Component {
         })
     }
 
+    componentDidMount() {
+        
+    }
+
     render() {
-        //const { user } = this.state;
         return (
             <div>
                 <h1>Hello, {this.state.user.username} welcome to Kwitter!</h1>

@@ -41,6 +41,7 @@ class RegisterPage extends React.Component {
         } else 
             if (user.username && user.password && user.email && user.firstName && user.lastName) {
                 authenticationService.register(user.username, user.password, user.email, user.firstName, user.lastName);
+                this.props.history.push('/login');
             }
     }
 
@@ -97,10 +98,8 @@ class RegisterPage extends React.Component {
                     </div>
 
                     <div className="form-group">
-                        <button className="btn btn-primary">Register</button>
-                        {registering && 
-                           <div className="help-block">Registration successful!</div> }
-                            
+                        <button className="btn btn-primary">Register</button>  
+                              
                         <Link to="/login" className="btn btn-link">Cancel</Link>
                     </div>
                 </form>

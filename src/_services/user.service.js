@@ -16,7 +16,7 @@ function getAll() {
                'Content-Type': 'application/json',
                'Authorization': auth,
        }, };
-    return fetch(`${Config.ApiBaseURL}/post/PostController/all`, requestOptions)
+    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.ALLPOSTS}`, requestOptions)
     //todo set correct api call
 }
 
@@ -27,7 +27,7 @@ function getCurrent() {
                'Content-Type': 'application/json',
                'Authorization': auth,
        }, };    
-    return fetch(`${Config.ApiBaseURL}/user/UserController/current`, requestOptions)
+    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.CURRENT}`, requestOptions)
     .then(res => res.json())
             .then(res =>{
                 return Promise.resolve(res);
