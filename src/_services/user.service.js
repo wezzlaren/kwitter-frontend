@@ -1,12 +1,25 @@
 import { Config } from '../config';
-import { authHeader, handleResponse } from '../_helpers';
-
 var auth = localStorage.getItem("token")
 export const userService = {
     getAll,
-    getCurrent
-    
+    getCurrent,
+    deleteUser
 };
+
+function deleteUser() {
+    const requestOptions = { method: 'DELETE',
+    headers:{
+      Accept: 'application/json',
+               'Content-Type': 'application/json',
+               'Authorization': auth,
+       }, };    
+    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.DELETEUSER}`, requestOptions)
+    .then(res => res.json())
+            .then(res =>{
+                console.log("User deleted")
+                return Promise.resolve(res);
+            })    
+} 
 
 function getAll() {
     

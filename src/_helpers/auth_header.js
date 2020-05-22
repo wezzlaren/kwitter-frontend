@@ -1,5 +1,3 @@
-import { authenticationService } from '../_services';
-
 export function authHeader() {
     const currentUser = localStorage.getItem("token");
     if (currentUser && currentUser.token) {

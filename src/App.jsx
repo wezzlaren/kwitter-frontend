@@ -9,6 +9,7 @@ import { LoginPage } from './LoginPage/LoginPage';
 import { ProfilePage } from './ProfilePage/ProfilePage'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { RegisterPage } from './RegisterPage';
+import { ChangePasswordPage } from './ChangePasswordPage/ChangePasswordPage'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "Kwitter"
         authenticationService.currentUser.subscribe(x => this.setState({ currentUser: x }));
     }
 
@@ -50,6 +52,7 @@ export default class App extends React.Component {
                                     <Switch>
                                         <PrivateRoute exact path="/" component={HomePage} />
                                         <PrivateRoute exact path="/profile" component={ProfilePage} />
+                                        <PrivateRoute exact path="/changepassword" component={ChangePasswordPage}/>
                                         <Route path="/login" component={LoginPage} />
                                         <Route path="/register" component={RegisterPage}/>
                                     </Switch>

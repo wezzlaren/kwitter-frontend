@@ -1,6 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
 import { Config } from '../config';
-import { handleResponse } from '../_helpers';
 
 // const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -38,15 +37,6 @@ function login(username, password) {
                 localStorage.setItem("token", token)
                 authenticationService.currentUser.next(true)
             }
-
-            // // store user details and jwt token in local storage to keep user logged
-            // localStorage.setItem('currentUser', JSON.stringify(user));
-            // currentUserSubject.next(user);
-
-            // return user;
-
-            // console.log(response.headers)
-            // debugger
         });
 }
 

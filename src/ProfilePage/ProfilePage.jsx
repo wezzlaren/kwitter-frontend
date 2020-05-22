@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { userService } from '../_services';
 
 class ProfilePage extends React.Component {
@@ -19,6 +18,8 @@ class ProfilePage extends React.Component {
             },
             authority: ''
         };
+
+        this.handleClick = this.handleClick.bind(this)
         
     }
 
@@ -33,8 +34,16 @@ class ProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        
+            
     }
+
+    handleClick(){
+        userService.deleteUser()
+        localStorage.removeItem("token")
+        
+        this.props.history.push('/login');
+    }
+    
 
     render() {
         const data = this.state.user.authorities
@@ -59,8 +68,13 @@ class ProfilePage extends React.Component {
                     <p className="Role"><b>Permissions:</b> </p>
                     <div>{roles}</div>
 
+                    <div>
+                        <p><a href="/changepassword">Change password</a></p>
+                    </div>
+                    
                     <div className="Delete">
-                        <button className="btn btn-danger">Delete account</button>  
+
+                        <button onClick={ () => {this.handleClick(this.state.user.username)}} className="btn btn-danger">Delete account</button>  
                     </div>
                     
             </div>

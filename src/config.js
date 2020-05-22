@@ -5,6 +5,7 @@ export class Config extends React.Component{
     static ApiUrls = {
         AUTH: "/auth",
         REGISTER: "/user/UserController/register",
+        DELETEUSER: "/user/UserController/deleteUser",
         CURRENT: "/user/UserController/current",
         ALLUSERS: "/user/UserController/all",
         ALLPOSTS: "/post/PostController/all",
