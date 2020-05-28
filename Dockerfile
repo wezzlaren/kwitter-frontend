@@ -8,6 +8,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY /src /app/src
 COPY ["package.json", "package-lock.json*", "./"]
+RUN npm install -g react-scripts
 RUN npm install --silent && mv node_modules ../
 
 # Uses port which is used by the actual application
