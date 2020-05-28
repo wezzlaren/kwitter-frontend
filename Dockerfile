@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
 # set working directory
+RUN apt install nodejs
 RUN mkdir /app
 WORKDIR /app
 COPY /src /app/src
