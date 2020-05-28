@@ -9,14 +9,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY package.json ./
 COPY package-lock.json ./
-RUN rm -rf node_modules
-RUN npm install
-RUN rm -rf node_modules
-RUN npm install -g react-scripts@3.4.0
 RUN npm install
 
 # add app
 COPY . ./
+
+# Uses port which is used by the actual application
+EXPOSE 3000
 
 # start app
 CMD ["npm", "start"]
