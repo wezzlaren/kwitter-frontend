@@ -11,8 +11,6 @@ RUN npm install react-scripts@3.4.0 -g
 
 COPY . /usr/src/app
 
-RUN npm run build
-
 # Uses port which is used by the actual application
 EXPOSE 80 443 3000
 
