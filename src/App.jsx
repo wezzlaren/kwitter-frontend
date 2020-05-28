@@ -9,7 +9,8 @@ import { LoginPage } from './LoginPage/LoginPage';
 import { ProfilePage } from './ProfilePage/ProfilePage'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { RegisterPage } from './RegisterPage';
-import { ChangePasswordPage } from './ChangePasswordPage/ChangePasswordPage'
+import { ChangePasswordPage } from './ChangePasswordPage/ChangePasswordPage';
+import { CreatePostPage } from './CreatePostPage/CreatePostPage';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -41,6 +42,7 @@ export default class App extends React.Component {
                             <div className="navbar-nav">
                                 <Link to="/" className="nav-item nav-link">Home</Link>
                                 <Link to="/profile" className="nav-item nav-link">Profile</Link>
+                                <Link to="/createpost" className="nav-item nav-link">Create Post</Link>
                                   <a onClick={this.logout} className="nav-item nav-link">Logout</a>
                             </div>
                         </nav>
@@ -53,6 +55,7 @@ export default class App extends React.Component {
                                         <PrivateRoute exact path="/" component={HomePage} />
                                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                                         <PrivateRoute exact path="/changepassword" component={ChangePasswordPage}/>
+                                        <PrivateRoute exact path="/createpost" component={CreatePostPage}/>
                                         <Route path="/login" component={LoginPage} />
                                         <Route path="/register" component={RegisterPage}/>
                                     </Switch>

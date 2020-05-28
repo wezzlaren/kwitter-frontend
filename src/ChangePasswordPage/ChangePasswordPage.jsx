@@ -58,7 +58,7 @@ class ChangePasswordPage extends React.Component {
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !user.old_password ? ' has-error' : '')}>
                         <label htmlFor="username">Old password</label>
-                        <input type="text" className="form-control" name="password" value={user.old_password} onChange={this.handleChange} />
+                        <input type="password" className="form-control" name="password" value={user.old_password} onChange={this.handleChange} />
                         {submitted && !user.old_password &&
                             <div className="help-block">Old password required</div>
                         }
