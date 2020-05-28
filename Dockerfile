@@ -1,4 +1,4 @@
-FROM ngix:alpine
+FROM nginx:alpine
 
 # set working directory
 RUN mkdir /app
