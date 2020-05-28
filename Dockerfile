@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install -g npm@latest
-RUN rm -f node_modules
+RUN rm -rf node_modules
 RUN npm install
 
 
