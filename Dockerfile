@@ -1,6 +1,9 @@
 FROM node:13.12.0-alpine
 
 # set working directory
+RUN apk update
+RUN apk upgrade
+RUN apk add bash
 RUN mkdir /app
 WORKDIR /app
 COPY /src /app/src
