@@ -30,6 +30,10 @@ function getAll() {
                'Authorization': auth,
        }, };
     return fetch(`${Config.ApiBaseURL + Config.ApiUrls.ALLPOSTS}`, requestOptions)
+    .then(res => res.json())
+            .then(res =>{
+                return Promise.resolve(res);
+            }) 
     //todo set correct api call
 }
 

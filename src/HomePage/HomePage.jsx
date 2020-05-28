@@ -8,6 +8,7 @@ class HomePage extends React.Component {
 
         this.state = {
             currentUser: authenticationService.currentUser,
+            post : [],
             user: {
                 username: '',
             }
@@ -25,7 +26,12 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        
+        userService.getAll()
+        .then(res => {
+            this.setState({
+                post: res,
+            })
+        })
     }
 
     render() {
@@ -34,14 +40,20 @@ class HomePage extends React.Component {
                 <h1>Hello, {this.state.user.username}!</h1>
                 <h1>Welcome to Kwitter</h1>
                 <br></br>
-                <h2>Posts overview:</h2>
-            <form>
-                    <label>
-                    Name:
-                    <input type="text" name="name" />
-                    </label>
-                    <input type="submit" value="Search" />
-            </form>
+                <h2><b>Overview Feed</b></h2>
+                <ul>
+                {this.state.post.length > 0 ? this.state.post.map(({id, author, title, content, dateCreated}) => (
+                <li key={id}>
+                    <b>Posted by:</b> {author}
+                    <br></br>
+                    <b>Title:</b> {title}
+                    <br></br>
+                    Posted on: {dateCreated}
+                    <br></br>
+                    Content: {content}
+                </li> )) : <li><p>No posts found by other kwitter users yet! Go create a post!</p></li> }
+                
+            </ul>
             </div>
         );
     }
