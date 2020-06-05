@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { RegisterPage } from './RegisterPage';
 import { ChangePasswordPage } from './ChangePasswordPage/ChangePasswordPage';
 import { CreatePostPage } from './CreatePostPage/CreatePostPage';
+import { ChangeUsernamePage } from './ChangeUsernamePage/ChangeUsernamePage';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -56,6 +57,7 @@ export default class App extends React.Component {
                                         <PrivateRoute exact path="/profile" component={ProfilePage} />
                                         <PrivateRoute exact path="/changepassword" component={ChangePasswordPage}/>
                                         <PrivateRoute exact path="/createpost" component={CreatePostPage}/>
+                                        <PrivateRoute exact path="/changeusername" component={ChangeUsernamePage}/>
                                         <Route path="/login" component={LoginPage} />
                                         <Route path="/register" component={RegisterPage}/>
                                     </Switch>

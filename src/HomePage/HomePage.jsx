@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { userService, authenticationService } from '../_services';
+import { userService, authenticationService, postService } from '../_services';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -26,7 +25,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        userService.getAll()
+        postService.getAll()
         .then(res => {
             this.setState({
                 post: res,

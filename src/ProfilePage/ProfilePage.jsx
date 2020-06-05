@@ -1,5 +1,6 @@
 import React from 'react';
 import { userService } from '../_services';
+import { Edit } from '@material-ui/icons'
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -60,7 +61,7 @@ class ProfilePage extends React.Component {
 
                 <h1 className="Name">Profile page</h1>
                             
-                    <p className="Name"><b>Username:</b> {this.state.user.username}</p>
+                    <p className="Name"><b>Username:</b> {this.state.user.username}  <a href="/changeusername"><Edit></Edit></a> </p> 
                     <p className="Email"><b>E-mail:</b> {this.state.user.email}</p>
                     <p className="Firstname"><b>First name:</b> {this.state.user.firstName}</p>
                     <p className="Lastname"><b>Last name:</b> {this.state.user.lastName}</p>

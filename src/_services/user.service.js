@@ -1,10 +1,30 @@
 import { Config } from '../config';
 var auth = localStorage.getItem("token")
 export const userService = {
-    getAll,
     getCurrent,
-    deleteUser
+    deleteUser,
+    changePassword,
+    updateUsername
 };
+
+function changePassword(oldPass, newPass){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+                    'Authorization': auth, },
+    };
+    return fetch(`http://localhost:8762/user/UserController/changePassword?oldPass=${oldPass}&newPass=${newPass}`, requestOptions)
+}
+
+function updateUsername(newUsername){
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json',
+                    'Authorization': auth, },
+    };
+    console.log(newUsername)
+    return fetch(`http://localhost:8762/user/UserController/updateUsername?username=${newUsername}`, requestOptions)
+}
 
 function deleteUser() {
     const requestOptions = { method: 'DELETE',
@@ -21,21 +41,6 @@ function deleteUser() {
             })    
 } 
 
-function getAll() {
-    
-    const requestOptions = { method: 'GET',
-    headers:{
-      Accept: 'application/json',
-               'Content-Type': 'application/json',
-               'Authorization': auth,
-       }, };
-    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.ALLPOSTS}`, requestOptions)
-    .then(res => res.json())
-            .then(res =>{
-                return Promise.resolve(res);
-            }) 
-    //todo set correct api call
-}
 
 function getCurrent() {
     const requestOptions = { method: 'GET',

@@ -6,9 +6,10 @@ class ChangePasswordPage extends React.Component {
         super(props);
         this.state = {
             user: {
-                old_password: '',
-                new_password: '',
-                confirm_password: '',
+                username: '',
+                oldPass: '',
+                newPass: '',
+                confirmPass: '',
             },
 
             submitted: false
@@ -22,6 +23,7 @@ class ChangePasswordPage extends React.Component {
     componentWillMount() {
         userService.getCurrent()
         .then(res => {
+            console.log(res.username)
             this.setState({
                 user: res,     
             })
@@ -41,9 +43,15 @@ class ChangePasswordPage extends React.Component {
     handleSubmit(event){
         event.preventDefault();
         this.setState({ submitted: true })
-        // if (user.password !== user.confirm_password) {
-        //     alert("Passwords don't match");
-        // }
+        const { user } = this.state
+        if (user.confirmPass !== user.newPass) {
+            alert("Passwords don't match");
+        } else
+            if (user.oldPass && user.newPass && user.confirmPass){
+                userService.changePassword(user.oldPass, user.confirmPass)
+                this.props.history.push('/')
+            }
+
     }
 
     componentDidMount() {
@@ -56,26 +64,26 @@ class ChangePasswordPage extends React.Component {
             <div className="col-md-6 col-md-offset-3">
                 <h2>Change your password</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !user.old_password ? ' has-error' : '')}>
-                        <label htmlFor="username">Old password</label>
-                        <input type="password" className="form-control" name="password" value={user.old_password} onChange={this.handleChange} />
-                        {submitted && !user.old_password &&
+                    <div className={'form-group' + (submitted && !user.oldPass ? ' has-error' : '')}>
+                        <label htmlFor="oldpassword">Old password</label>
+                        <input type="password" className="form-control" name="oldPass" value={user.oldPass} onChange={this.handleChange} />
+                        {submitted && !user.oldPass &&
                             <div className="help-block">Old password required</div>
                         }
                     </div>
-                    <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
-                        <label htmlFor="password">New password</label>
-                        <input type="password" className="form-control" name="password" value={user.new_password} onChange={this.handleChange} />
-                        {submitted && !user.new_password &&
+                    <div className={'form-group' + (submitted && !user.newPass ? ' has-error' : '')}>
+                        <label htmlFor="newpassword">New password</label>
+                        <input type="password" className="form-control" name="newPass" value={user.newPass} onChange={this.handleChange} />
+                        {submitted && !user.newPass &&
 
                             <div className="help-block">New password is required</div>
                         }
                     </div>
-                    <div className={'form-group' + (submitted && !user.confirm_password ? ' has-error' : '')}>
-                        <label htmlFor="password">Confirm password</label>
-                        <input type="password" className="form-control" name="confirm_password" value={user.confirm_password} onChange={this.handleChange} />
-                        {submitted && !user.confirm_password &&
-                            <div className="help-block">Repeat password is required</div>
+                    <div className={'form-group' + (submitted && !user.confirmPass ? ' has-error' : '')}>
+                        <label htmlFor="confirmnewpassword">Confirm password</label>
+                        <input type="password" className="form-control" name="confirmPass" value={user.confirmPass} onChange={this.handleChange} />
+                        {submitted && !user.confirmPass &&
+                            <div className="help-block">Repeat new password</div>
                         }
                     </div>
 

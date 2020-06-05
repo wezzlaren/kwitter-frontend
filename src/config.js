@@ -11,7 +11,7 @@ export class Config extends React.Component{
         ALLPOSTS: "/post/PostController/all",
         UPDATEUSERNAME: "/user/UserController/updateUsername",
         CREATEPOST: "/post/PostController/createpost",
-        POSTBYAUTHOR: "/Post/PostController/postsbyauthor"
-
+        POSTBYAUTHOR: "/post/PostController/postsbyauthor",
+        CHANGEPASSWORD: "/user/UserController/changepassword"
     }
 }
