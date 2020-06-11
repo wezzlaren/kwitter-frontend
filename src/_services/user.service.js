@@ -13,7 +13,7 @@ function changePassword(oldPass, newPass){
         headers: { 'Content-Type': 'application/json',
                     'Authorization': auth, },
     };
-    return fetch(`http://localhost:8762/user/UserController/changePassword?oldPass=${oldPass}&newPass=${newPass}`, requestOptions)
+    return fetch(`${Config.ApiBaseURL}/user/UserController/changePassword?oldPass=${oldPass}&newPass=${newPass}`, requestOptions)
 }
 
 function updateUsername(newUsername){
@@ -23,7 +23,7 @@ function updateUsername(newUsername){
                     'Authorization': auth, },
     };
     console.log(newUsername)
-    return fetch(`http://localhost:8762/user/UserController/updateUsername?username=${newUsername}`, requestOptions)
+    return fetch(`${Config.ApiBaseURL}/user/UserController/updateUsername?username=${newUsername}`, requestOptions)
 }
 
 function deleteUser() {

@@ -1,7 +1,8 @@
 import React from 'react'
 
 export class Config extends React.Component{
-    static ApiBaseURL = "http://localhost:8762"
+    //static ApiBaseURL = "http://localhost:8762"
+    static ApiBaseURL = "http://35.246.84.96"
     static ApiUrls = {
         AUTH: "/auth",
         REGISTER: "/user/UserController/register",
