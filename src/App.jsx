@@ -12,6 +12,8 @@ import { RegisterPage } from './RegisterPage';
 import { ChangePasswordPage } from './ChangePasswordPage/ChangePasswordPage';
 import { CreatePostPage } from './CreatePostPage/CreatePostPage';
 import { ChangeUsernamePage } from './ChangeUsernamePage/ChangeUsernamePage';
+import { AdminPage } from './AdminPage/AdminPage';
+import { DeleteUserPage } from './DeleteUserPage/DeleteUserPage';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -58,6 +60,8 @@ export default class App extends React.Component {
                                         <PrivateRoute exact path="/changepassword" component={ChangePasswordPage}/>
                                         <PrivateRoute exact path="/createpost" component={CreatePostPage}/>
                                         <PrivateRoute exact path="/changeusername" component={ChangeUsernamePage}/>
+                                        <PrivateRoute exact path="/admin" component={AdminPage}/>
+                                        <PrivateRoute exact path="/admindelete" component={DeleteUserPage}/>
                                         <Route path="/login" component={LoginPage} />
                                         <Route path="/register" component={RegisterPage}/>
                                     </Switch>

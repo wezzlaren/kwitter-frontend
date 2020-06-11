@@ -4,7 +4,9 @@ export const userService = {
     getCurrent,
     deleteUser,
     changePassword,
-    updateUsername
+    updateUsername,
+    getAll,
+    deleteAsAdmin
 };
 
 function changePassword(oldPass, newPass){
@@ -37,6 +39,35 @@ function deleteUser() {
     .then(res => res.json())
             .then(res =>{
                 console.log("User deleted")
+                return Promise.resolve(res);
+            })    
+} 
+
+function deleteAsAdmin(delUsername) {
+    const requestOptions = { method: 'DELETE',
+    headers:{
+      Accept: 'application/json',
+               'Content-Type': 'application/json',
+               'Authorization': auth,
+       }, };    
+    return fetch(`${Config.ApiBaseURL}/user/UserController/delete?username=${delUsername}`, requestOptions)
+    .then(res => res.json())
+            .then(res =>{
+                console.log("User deleted by admins")
+                return Promise.resolve(res);
+            })    
+} 
+
+function getAll() {
+    const requestOptions = { method: 'GET',
+    headers:{
+      Accept: 'application/json',
+               'Content-Type': 'application/json',
+               'Authorization': auth,
+       }, };    
+    return fetch(`${Config.ApiBaseURL + Config.ApiUrls.ALLUSERS}`, requestOptions)
+    .then(res => res.json())
+            .then(res =>{
                 return Promise.resolve(res);
             })    
 } 
