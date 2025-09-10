@@ -14,7 +14,7 @@
     "react-dom": "^16.13.1",
     "react-global-configuration": "^1.4.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "rxjs": "^6.5.5",
     "yup": "^0.28.5"
   },
